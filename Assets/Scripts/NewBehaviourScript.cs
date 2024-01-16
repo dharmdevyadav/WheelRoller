@@ -12,6 +12,7 @@ public class NewBehaviourScript : MonoBehaviour
   public bool RepeatFlag;
   private bool IsActive;
   public GameObject wheel;
+    public GameObject Gameobject;
   Rigidbody2D rb;
   public void PopUp()
   {
@@ -20,11 +21,32 @@ public class NewBehaviourScript : MonoBehaviour
     StartCoroutine(Pop());
     
   }
-  public void MyCoroutineStop()
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("Touched number:"+other.name);
+        }
+    }
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            Debug.Log("Touched something out");
+        }
+    }
+    public void MyCoroutineStop()
   {
     StopAllCoroutines();
     transform.localScale=new Vector3(0.9f, 0.9f,0.9f);
-  }
+       // transform.GetChild(0).localScale = new Vector3(0.9f, 0.9f, 0.9f);
+    }
+
+    public void RotateMyBall()
+    {
+        //Gameobject.transform.localPosition = new Vector3(0.6f, 0.03f, 0.08f);
+        Gameobject.transform.localRotation=Quaternion.Euler(0, 0, Random.Range(6,10));
+    }
 
   public void RotateMyObject()
   {
@@ -63,7 +85,12 @@ public class NewBehaviourScript : MonoBehaviour
     if (IsActive==true)
     {
       RotateMyObject();
-    }
+      Invoke("RotateMyBall",0.4f);
+        }
+        else
+        {
+            Gameobject.transform.GetChild(0).localPosition = new Vector3(0.04f,-0.06f,-0.68f);
+        }
     
   }
 
