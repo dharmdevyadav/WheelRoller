@@ -18,22 +18,19 @@ public class NewBehaviourScript : MonoBehaviour
     public GameObject Checkpoints;
     public Button btnSpin;
     public Button btnCancel;
-    public Image RaycastBlocker;
+    public GameObject RayCastObj;
     
    
     private void Start()
     {
-        
+        RayCastObj.SetActive(false);
         Checkpoints.SetActive(false);
-        btnCancel.interactable = false;
-        RaycastBlocker = FindObjectOfType<Image>();
-        RaycastBlocker.enabled = false;
+        btnCancel.interactable = false;  
     }
     public void PopUp()
   {
-        //ForSelectButton.btn.interactable = false;
     RepeatFlag = true;
-        RaycastBlocker.enabled = true;
+        RayCastObj.SetActive(true);
         Checkpoints.SetActive(false);
     StartCoroutine(Pop());
 
@@ -49,7 +46,7 @@ public class NewBehaviourScript : MonoBehaviour
     public void RotateMyBall()
     {
         //Gameobject.transform.localPosition = new Vector3(0.6f, 0.03f, 0.08f);
-        Ball.transform.localRotation=Quaternion.Euler(0, 0, Random.Range(15,20));
+        Ball.transform.localRotation=Quaternion.Euler(0, 0, Random.Range(20,30));
     }
 
   public void RotateMyObject()
