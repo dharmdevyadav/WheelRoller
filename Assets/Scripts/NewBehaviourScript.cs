@@ -18,26 +18,24 @@ public class NewBehaviourScript : MonoBehaviour
     public GameObject Checkpoints;
     public Button btnSpin;
     public Button btnCancel;
-    ScoreDetecter ForSelectButton;
-    Rigidbody2D rb;
-    // FindNumber fn;
+    public Image RaycastBlocker;
+    
+   
     private void Start()
     {
+        
         Checkpoints.SetActive(false);
         btnCancel.interactable = false;
-        ForSelectButton=FindObjectOfType<ScoreDetecter>();
+        RaycastBlocker = FindObjectOfType<Image>();
+        RaycastBlocker.enabled = false;
     }
     public void PopUp()
   {
         //ForSelectButton.btn.interactable = false;
     RepeatFlag = true;
-        
+        RaycastBlocker.enabled = true;
         Checkpoints.SetActive(false);
     StartCoroutine(Pop());
-        
-  }
-    public void ClearSelectedItem()
-    {
 
     }
    
@@ -56,7 +54,7 @@ public class NewBehaviourScript : MonoBehaviour
 
   public void RotateMyObject()
   {
-    transform.Rotate(new Vector3(0, 0,-7.5f));
+    transform.Rotate(new Vector3(0, 0,-10f));
   }
   IEnumerator Pop()
   {
@@ -70,7 +68,6 @@ public class NewBehaviourScript : MonoBehaviour
             btnCancel.interactable = false;
             yield return new WaitForSeconds(7f);
             btnSpin.interactable =false;
-            //ForSelectButton.btn.interactable = true;
             btnCancel.interactable = true;
             Checkpoints.SetActive(true);
             IsActive = false;

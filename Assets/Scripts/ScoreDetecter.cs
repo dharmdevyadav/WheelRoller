@@ -19,13 +19,18 @@ public class ScoreDetecter : MonoBehaviour
     }
     public void OnSelectedBtn()
     {
-       
+        SpinButton.interactable = true;
         if (btn.interactable == true)
         {
             btn.interactable = false;
             
         }
-        SpinButton.interactable = true;
+        if(SpinButton.interactable == false)
+        {
+            btn.interactable = false;
+        }
+        
+       // SpinButton.interactable = true;
         ForCancelButton.btnCancel.interactable = true;
         
     }

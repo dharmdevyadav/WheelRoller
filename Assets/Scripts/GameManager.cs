@@ -9,17 +9,18 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI ScoreText;
     [SerializeField] Button SpinButton;
+    NewBehaviourScript NewRayCastObject;
     private void Awake()
     {
         ScoreText=FindObjectOfType<TextMeshProUGUI>();
         SpinButton = FindObjectOfType<Button>();
+        NewRayCastObject=FindObjectOfType<NewBehaviourScript>();
     }
     public void onUnselect()
     {
          DontDestroyOnLoad(ScoreText);
-        //SpinButton.interactable = false;
         SceneManager.LoadScene(1);
-        
+        //NewRayCastObject.RaycastBlocker.enabled = false;
     }
     
 }
