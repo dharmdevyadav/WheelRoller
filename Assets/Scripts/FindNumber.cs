@@ -1,24 +1,77 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class FindNumber : MonoBehaviour
 {
-    
-    //BoxCollider collider;
+    public TextMeshProUGUI ScoreText;
     NewBehaviourScript WheelScript;
-    bool istrue;
+    int score1;
+            
     private void Awake()
     {
-        //collider = GetComponent<BoxCollider>();
         WheelScript = FindObjectOfType<NewBehaviourScript>();
+        score1 = 0;
+    }
+
+    public int AddedScore()
+    {
+       
+        int score = int.Parse(gameObject.name);
+
+        if (score > 0 && score < 5)
+        {
+            score1 = 10;
+            ScoreText.text = "Score: " + score1.ToString();
+
+        }
+        else if (score > 5 && score <= 10)
+        {
+            score1 = 20;
+            ScoreText.text = "Score: " + score1.ToString();
+        }
+        else if (score > 10 && score <= 15)
+        {
+            score1 = 30;
+            ScoreText.text = "Score: " + score1.ToString();
+        }
+        else if (score > 15 && score <= 20)
+        {
+            score1 = 30;
+            ScoreText.text = "Score: " + score1.ToString();
+        }
+        else if (score > 20 && score <= 25)
+        {
+            score1 = 35;
+            ScoreText.text = "Score: " + score1.ToString();
+        }
+        else if (score > 25 && score <= 30)
+        {
+            score1 = 40;
+            ScoreText.text = "Score: " + score1.ToString();
+        }
+        else if (score > 30 && score <= 36)
+        {
+            score1 = 50;
+            ScoreText.text = "Score: " + score1.ToString();
+        }
+        else
+        {
+            ScoreText.text = "Score: " + score1.ToString();
+        }
+        return score1;
     }
     public void OnTriggerEnter(Collider col)
     {
         if (col.CompareTag("Player"))
             {
                 Debug.Log("Ball stands on number: " + gameObject.name);
-                Debug.DebugBreak();
+                AddedScore();
+               
             }
+        
     }
+    
+
 }

@@ -46,7 +46,7 @@ public class NewBehaviourScript : MonoBehaviour
     public void RotateMyBall()
     {
         //Gameobject.transform.localPosition = new Vector3(0.6f, 0.03f, 0.08f);
-        Ball.transform.localRotation=Quaternion.Euler(0, 0, Random.Range(20,30));
+        Ball.transform.localRotation=Quaternion.Euler(0, 0, Random.Range(15,30));
     }
 
   public void RotateMyObject()

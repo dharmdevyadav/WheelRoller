@@ -7,18 +7,18 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI ScoreText;
-    [SerializeField] Button SpinButton;
-  
-    private void Awake()
+    [SerializeField] GameObject scoreText;
+    
+    
+
+    private void Start()
     {
-        ScoreText=FindObjectOfType<TextMeshProUGUI>();
-        SpinButton = FindObjectOfType<Button>();
-       
+        
     }
+   
     public void onUnselect()
     {
-         DontDestroyOnLoad(ScoreText);
+        
         SceneManager.LoadScene(1);
         
     }

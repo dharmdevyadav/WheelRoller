@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class ScoreDetecter : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI ScoreText;
-    //float Score;
     public Button btn;
     [SerializeField] Button SpinButton;
     NewBehaviourScript ForCancelButton;
@@ -30,7 +29,6 @@ public class ScoreDetecter : MonoBehaviour
             btn.interactable = false;
         }
         
-       // SpinButton.interactable = true;
         ForCancelButton.btnCancel.interactable = true;
         
     }
