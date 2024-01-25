@@ -8,14 +8,6 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject scoreText;
-    
-    
-
-    private void Start()
-    {
-        
-    }
-   
     public void onUnselect()
     {
         

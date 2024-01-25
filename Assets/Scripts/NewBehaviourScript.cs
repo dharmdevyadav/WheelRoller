@@ -12,20 +12,25 @@ public class NewBehaviourScript : MonoBehaviour
   [SerializeField] private Vector3 maxScale;
   [SerializeField] private float ScalingDuration;*/
   public bool RepeatFlag;
-  private bool IsActive;
-  public GameObject wheel;
+  public bool IsActive;
+    public bool buttonSpinClicked = false;
+    public GameObject wheel;
     public GameObject Ball;
     public GameObject Checkpoints;
     public Button btnSpin;
     public Button btnCancel;
     public GameObject RayCastObj;
+    ScoreDetecter GetSameNumber;
+    
     
    
     private void Start()
     {
+        GetSameNumber=FindObjectOfType<ScoreDetecter>();
         RayCastObj.SetActive(false);
         Checkpoints.SetActive(false);
-        btnCancel.interactable = false;  
+        btnCancel.interactable = false; 
+      
     }
     public void PopUp()
   {
@@ -36,13 +41,6 @@ public class NewBehaviourScript : MonoBehaviour
 
     }
    
-    /*public void MyCoroutineStop()
-  {
-    StopAllCoroutines();
-    transform.localScale=new Vector3(0.9f, 0.9f,0.9f);
-       // transform.GetChild(0).localScale = new Vector3(0.9f, 0.9f, 0.9f);
-    }*/
-
     public void RotateMyBall()
     {
         //Gameobject.transform.localPosition = new Vector3(0.6f, 0.03f, 0.08f);
@@ -51,9 +49,9 @@ public class NewBehaviourScript : MonoBehaviour
 
   public void RotateMyObject()
   {
-    transform.Rotate(new Vector3(0, 0,-10f));
+    transform.Rotate(new Vector3(0, 0,-Random.Range(5f,20f)));
   }
-  IEnumerator Pop()
+  public IEnumerator Pop()
   {
 
     while (RepeatFlag)
@@ -64,6 +62,7 @@ public class NewBehaviourScript : MonoBehaviour
       IsActive = true;
             btnCancel.interactable = false;
             yield return new WaitForSeconds(7f);
+            GetSameNumber.TryToGetSame();
             btnSpin.interactable =false;
             btnCancel.interactable = true;
             Checkpoints.SetActive(true);
@@ -74,16 +73,16 @@ public class NewBehaviourScript : MonoBehaviour
     }
   }
    
-  IEnumerator RepeatingFlag(Vector3 startScale,Vector3 endScale,float time)
-  {
+  /*IEnumerator RepeatingFlag(Vector3 startScale,Vector3 endScale,float time)
+  {*/
     /*float t = 0.0f;
     float rate = (1f / time) * ScalingSpeed;
     while (t < 1f)
     {
       t += Time.deltaTime * rate;
       transform.localScale=Vector3.Lerp(startScale, endScale, t);*/
-      yield return null;
-    }
+     // yield return null;
+   // }
   
   private void Update()
   {

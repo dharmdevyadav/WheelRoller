@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -7,12 +8,17 @@ public class FindNumber : MonoBehaviour
 {
     public TextMeshProUGUI ScoreText;
     NewBehaviourScript WheelScript;
+    ScoreDetecter ScoreFinding;
     int score1;
+    public int number;
             
     private void Awake()
     {
+        ScoreFinding=FindObjectOfType<ScoreDetecter>();
         WheelScript = FindObjectOfType<NewBehaviourScript>();
         score1 = 0;
+        number =Int32.Parse(gameObject.name);
+        
     }
 
     public int AddedScore()
@@ -65,12 +71,16 @@ public class FindNumber : MonoBehaviour
     public void OnTriggerEnter(Collider col)
     {
         if (col.CompareTag("Player"))
-            {
-                Debug.Log("Ball stands on number: " + gameObject.name);
-                AddedScore();
-               
-            }
-        
+        {
+            Debug.Log("Ball stands on number: " + gameObject.name);
+            AddedScore();
+            ScoreFinding.TryToGetSame(); 
+        }
+        /*if (number == ScoreFinding.btnNumber)
+        {
+            Debug.Log("YYou Wonnn!");
+        }*/
+
     }
     
 
